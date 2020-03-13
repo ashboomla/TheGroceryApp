@@ -57,15 +57,15 @@ class ProductFragment : Fragment() {
         Log.d("subId1", subId.toString())
 
         getProductData(subId)
-        view.recycler_view_product.layoutManager =
-            LinearLayoutManager(activity) //init Layout Manager : picks layout
-        adapterProduct = AdapterProductFragment(
-            view.context,
-            mList
-        ) // mContext = this ; this lets the adapter know that this current
+
+        adapterProduct = AdapterProductFragment(view.context)
+        view.recycler_view_product.layoutManager = LinearLayoutManager(activity) //init Layout Manager : picks layout
+         // mContext = this ; this lets the adapter know that this current
         // activty is using the adapter for the recycle view
 
         view.recycler_view_product.adapter = adapterProduct //set the adapter to the recycler view
+
+
     }
 
     private fun getProductData(subId: Int) {//getting product based on subId from subCategory

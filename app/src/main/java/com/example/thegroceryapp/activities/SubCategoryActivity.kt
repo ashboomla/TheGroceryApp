@@ -29,9 +29,7 @@ class SubCategoryActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        category =
-            intent.getSerializableExtra(Category.KEY_CATEGORY) as Category//passing the whole object
-        getData(category.catId) //????
+        category = intent.getSerializableExtra(Category.KEY_CATEGORY) as Category//passing the whole object
 
 
         adapterSubCategory = AdapterSubCategory(supportFragmentManager)
@@ -41,6 +39,9 @@ class SubCategoryActivity : AppCompatActivity() {
             intent.extras?.getString("CATNAME") //pulling in the data with key from AdapterCategory
         text_view.text = resCatName
 
+        getData(category.catId)
+
+
     }
     private fun getData(catId: Int) {//getting subcategory
 
@@ -48,7 +49,7 @@ class SubCategoryActivity : AppCompatActivity() {
         var resCatId =
             intent.extras?.getInt("CATID") //pulling in the data with key from AdapterCategory
 
-        Toast.makeText(this, "caught : $resCatId", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "caught catID: $resCatId", Toast.LENGTH_LONG).show()
 
         var requestQueue =
             Volley.newRequestQueue(this) //Request Queue keeps track of all your requests
@@ -71,7 +72,7 @@ class SubCategoryActivity : AppCompatActivity() {
                 view_pager.adapter = adapterSubCategory
                 tab_layout.setupWithViewPager(view_pager)
 
-                Toast.makeText(this, "" + subcategoryResponse.data.size, Toast.LENGTH_SHORT).show()
+               // Toast.makeText(this, "" + subcategoryResponse.data.size, Toast.LENGTH_SHORT).show()
 
             },
             Response.ErrorListener {

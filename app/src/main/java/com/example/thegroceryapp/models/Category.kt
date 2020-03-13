@@ -5,7 +5,8 @@ import java.io.Serializable
 data class Category(
     var catImage: String,
     var catId: Int,
-    var catName: String
+    var catName: String,
+    var catDescription:String
 ) :Serializable{
 //generate --> kotlin dataclass from json
 //how do you get the generate plugin

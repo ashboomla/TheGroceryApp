@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 )
 
                 mList = categoryResponse.data
-                Log.d("Category",mList[0].toString()) //debug check
+               // Log.d("Category",mList[0].toString()) //debug check
                 adapterCategory.setData(mList) // passing the new model class over the layout to overwrite and display it .
                 progress_bar.visibility = View.GONE
             },
