@@ -21,13 +21,14 @@ import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.fragment_product.*
 import kotlinx.android.synthetic.main.fragment_product.view.*
 import kotlinx.android.synthetic.main.row_product_fragment_adapter.view.*
-
 private const val ARG_PARAM1 = "param1"
 
-lateinit var adapterProduct: AdapterProductFragment
-var mList: ArrayList<Product> = ArrayList() //Create an arrayList of the Category DC
-
 class ProductFragment : Fragment() {
+
+
+    lateinit var adapterProduct: AdapterProductFragment
+    var mList: ArrayList<Product> = ArrayList() //Create an arrayList of the Category DC //make sure its insde the class
+
     //pass the sub id to this fragment in a text box; display that
     //make
     private var subId: Int = 1

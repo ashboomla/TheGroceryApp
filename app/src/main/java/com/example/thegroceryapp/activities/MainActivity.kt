@@ -1,5 +1,7 @@
 package com.example.thegroceryapp.activities
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -41,14 +43,21 @@ class MainActivity : AppCompatActivity() {
     private fun init() {
         getData()
         recycler_view.layoutManager =
-            GridLayoutManager(this, 2) //init Layout Manager : picks layout
+            GridLayoutManager(this, 2) //init Layout Manager : picks layout  // mContext = this ; this lets the adapter know that this current
         adapterCategory = AdapterCategory(
             this,
             mList
-        ) // mContext = this ; this lets the adapter know that this current
+        )
         // activty is using the adapter for the recycle view
 
         recycler_view.adapter = adapterCategory //set the adapter to the recycler view
+
+        button_logout_Main.setOnClickListener{
+            var sharedPreferences = getSharedPreferences("my_login", Context.MODE_PRIVATE)
+            var editor = sharedPreferences.edit()
+            editor.clear() // clears the file
+            startActivity(Intent(this,LaunchActivity::class.java))
+        }
     }
 
     private fun getData() {
