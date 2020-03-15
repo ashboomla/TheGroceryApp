@@ -2,7 +2,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/colorPrimaryDark">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,14 +18,14 @@
             android:textStyle="bold"
             android:textSize="25dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="40dp"
             android:background="@drawable/button_background"
-            android:drawableEnd="@drawable/ic_person_black_24dp"
+            android:drawableEnd="@drawable/ic_logout"
             android:drawablePadding="10dp"
             android:padding="10dp"
             android:textColor="@color/tbText"
-  
+
             />
     </LinearLayout>
 

@@ -54,7 +54,7 @@ class AdapterCategory(var mContext: Context, var mList: ArrayList<Category>) :
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(category: Category, position:Int) {
             itemView.text_view_title.text = category.catName
-            itemView.text_view_desc.text = category.catDescription
+          //  itemView.text_view_desc.text = category.catDescription  //row category adapter
 //this is where the bridge meets category comes from the activity // adapterCategory = AdapterCategory(this,mList)
             Log.d("good", category.catImage.toString()) // store it in log
 

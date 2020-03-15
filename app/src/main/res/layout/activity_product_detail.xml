@@ -2,27 +2,42 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
 
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/image_view_PDA" />
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:id="@+id/image_view_PDA"
+        android:layout_margin="15dp"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="title"
         android:id="@+id/text_view_name_PDA"
-        android:layout_toRightOf="@+id/image_view_PDA"/>
+        android:layout_below="@+id/image_view_PDA"
+        android:padding="10dp"
+        android:textColor="@color/tbText"
+        android:textColorHint="@color/tbHint"
+        android:layout_margin="5dp"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="title"
+        android:text="desc"
         android:id="@+id/text_view_desc_PDA"
-        android:layout_toRightOf="@+id/image_view_PDA"
         android:layout_below="@+id/text_view_name_PDA"
+        android:padding="10dp"
+        android:textColor="@color/tbText"
+        android:textColorHint="@color/tbHint"
+        android:layout_margin="5dp"
+        android:textSize="20dp"
+        android:layout_alignStart="@+id/text_view_name_PDA"
         />
 </RelativeLayout>
