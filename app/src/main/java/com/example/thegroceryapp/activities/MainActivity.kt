@@ -16,6 +16,7 @@ import com.example.thegroceryapp.R
 import com.example.thegroceryapp.adapters.AdapterCategory
 import com.example.thegroceryapp.adapters.AdapterViewPagerImageSlider
 import com.example.thegroceryapp.appData.Endpoints
+import com.example.thegroceryapp.helpers.SessionManager
 import com.example.thegroceryapp.models.Category
 import com.example.thegroceryapp.models.CategoryResponse
 import com.google.gson.GsonBuilder
@@ -52,11 +53,19 @@ class MainActivity : AppCompatActivity() {
 
         recycler_view.adapter = adapterCategory //set the adapter to the recycler view
 
-        button_logout_Main.setOnClickListener{
+       /* button_logout_Main.setOnClickListener{
             var sharedPreferences = getSharedPreferences("my_login", Context.MODE_PRIVATE)
             var editor = sharedPreferences.edit()
             editor.clear() // clears the file
             startActivity(Intent(this,LaunchActivity::class.java))
+        }*/
+    logout()
+    }
+
+    private fun logout() {
+        button_logout_Main.setOnClickListener{
+            var sessionManager = SessionManager(this)
+            sessionManager.logout()
         }
     }
 

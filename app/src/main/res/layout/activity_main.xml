@@ -16,7 +16,15 @@
             android:text="Log Out"
             android:textStyle="bold"
             android:textSize="25dp"
-
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/button_background"
+            android:drawableEnd="@drawable/ic_person_black_24dp"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:textColor="@color/tbText"
+  
             />
     </LinearLayout>
 

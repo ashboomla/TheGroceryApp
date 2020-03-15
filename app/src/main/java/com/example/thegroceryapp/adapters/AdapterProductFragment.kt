@@ -48,7 +48,7 @@ var view = LayoutInflater.from(mContext).inflate(R.layout.row_product_fragment_a
         fun bind(product:Product,position: Int)
         {
             itemView.text_view_name.text = product.productName
-            itemView.text_view_desc.text = product.description
+           // itemView.text_view_desc.text = product.description
 
             Picasso
                 .with(mContext)

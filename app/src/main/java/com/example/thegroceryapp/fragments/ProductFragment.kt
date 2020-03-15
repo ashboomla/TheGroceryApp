@@ -1,5 +1,6 @@
 package com.example.thegroceryapp.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -24,10 +25,8 @@ import kotlinx.android.synthetic.main.row_product_fragment_adapter.view.*
 private const val ARG_PARAM1 = "param1"
 
 class ProductFragment : Fragment() {
-
-
     lateinit var adapterProduct: AdapterProductFragment
-    var mList: ArrayList<Product> = ArrayList() //Create an arrayList of the Category DC //make sure its insde the class
+    var mList: ArrayList<Product> = ArrayList() //Create an arrayList of the Category DC //make sure its inside the class being outside will cause it to have errors.
 
     //pass the sub id to this fragment in a text box; display that
     //make
@@ -59,7 +58,7 @@ class ProductFragment : Fragment() {
 
         getProductData(subId)
 
-        adapterProduct = AdapterProductFragment(view.context)
+        adapterProduct = AdapterProductFragment(activity as Context) //to typecast activity to another type
         view.recycler_view_product.layoutManager = LinearLayoutManager(activity) //init Layout Manager : picks layout
          // mContext = this ; this lets the adapter know that this current
         // activty is using the adapter for the recycle view

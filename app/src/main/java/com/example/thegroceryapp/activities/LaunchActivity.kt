@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.thegroceryapp.R
+import com.example.thegroceryapp.helpers.SessionManager
 import kotlinx.android.synthetic.main.activity_launch.*
 
 class LaunchActivity : AppCompatActivity(), View.OnClickListener {
@@ -14,7 +15,15 @@ class LaunchActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch)
 
-        checkLogin()
+        var sessionManager = SessionManager(this)
+        if(!sessionManager.checkLogin())
+        {
+            startActivity(Intent(this,LoginActivity::class.java))
+        }
+        else
+        {
+            startActivity(Intent(this,MainActivity::class.java))
+        }
         init()
     }
 
@@ -33,11 +42,11 @@ class LaunchActivity : AppCompatActivity(), View.OnClickListener {
         }
 
     }
-    private fun checkLogin() {
+/*    private fun checkLogin() {
         var sharedPreference = getSharedPreferences("my_login", Context.MODE_PRIVATE)
         var status = sharedPreference.getBoolean("isLoggedIn", false)
         if(status){
             startActivity(Intent(this,MainActivity::class.java))
         }
-    }
+    }*/
 }
