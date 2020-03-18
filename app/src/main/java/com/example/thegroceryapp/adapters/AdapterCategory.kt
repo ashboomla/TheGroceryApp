@@ -17,12 +17,12 @@ import kotlinx.android.synthetic.main.row_category_adapter.view.*
 
 class AdapterCategory(var mContext: Context, var mList: ArrayList<Category>) :
     RecyclerView.Adapter<AdapterCategory.MyViewHolder>() {
-
     /*
    tells which view to use
      binds the row data to the view-activity: recycle view
     mContext = this (current activity) -->inflate--> tells to use this layout(row_category-adapter)
      this is the view for the plaeHolder --> row data
+
     * */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         var view = LayoutInflater.from(mContext).inflate(R.layout.row_category_adapter, parent, false) // gives the view object
@@ -55,20 +55,19 @@ class AdapterCategory(var mContext: Context, var mList: ArrayList<Category>) :
         fun bind(category: Category, position:Int) {
             itemView.text_view_title.text = category.catName
           //  itemView.text_view_desc.text = category.catDescription  //row category adapter
-//this is where the bridge meets category comes from the activity // adapterCategory = AdapterCategory(this,mList)
+            //this is where the bridge meets category comes from the activity // adapterCategory = AdapterCategory(this,mList)
             Log.d("good", category.catImage.toString()) // store it in log
 
-            Picasso
-                .with(mContext)
+            Picasso//order is very important
+                .get()
                 .load(Config.IMAGE_URL+category.catImage)//the path
                 .placeholder(R.drawable.image_place_holder)
                 .error(R.drawable.image_place_holder)
                 .into(itemView.image_view)
-//order is very important
 
             itemView.setOnClickListener{
                 var subCategoryIntent = Intent(mContext, SubCategoryActivity::class.java)
-                subCategoryIntent.putExtra("CATID", category.catId)
+             //   subCategoryIntent.putExtra("CATID", category.catId)
                 subCategoryIntent.putExtra("CATNAME", category.catName)
                 subCategoryIntent.putExtra(Category.KEY_CATEGORY, category)
 

@@ -1,6 +1,5 @@
 package com.example.thegroceryapp.activities
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -27,7 +26,8 @@ class RegisterActivity : AppCompatActivity() {
             var sessionManager = SessionManager(this)
             sessionManager.register(name,email,password)
             Toast.makeText(this,"You've been Registered \n Welcome $name!", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this,
+                LoginActivity::class.java))
 
        /* var sharedPreferences = getSharedPreferences("my_login", Context.MODE_PRIVATE)
         var editor = sharedPreferences.edit()

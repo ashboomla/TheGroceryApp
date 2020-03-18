@@ -6,15 +6,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.denzcoskun.imageslider.ImageSlider
+import com.denzcoskun.imageslider.interfaces.ItemClickListener
+import com.denzcoskun.imageslider.models.SlideModel
 import com.example.thegroceryapp.R
 import com.example.thegroceryapp.adapters.AdapterCategory
-import com.example.thegroceryapp.adapters.AdapterViewPagerImageSlider
 import com.example.thegroceryapp.appData.Endpoints
 import com.example.thegroceryapp.helpers.SessionManager
 import com.example.thegroceryapp.models.Category
@@ -25,47 +28,80 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     var mList: ArrayList<Category> = ArrayList() //Create an arrayList of the Category DC
-
     lateinit var adapterCategory: AdapterCategory // lateinit = late initizilation : has no value until you later initialize it
-
     internal lateinit var viewPager: ViewPager //?
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewPager = findViewById<View>(R.id.view_pager) as ViewPager
-        val adapter = AdapterViewPagerImageSlider(this)
-        viewPager.adapter = adapter
-
-        init()
+        ISinit() // initialize imageSlider
+        init() // initialize all else
     }
+
+    private fun ISinit() { //imageSlider Init
+        val imageList = ArrayList<SlideModel>()
+// imageList.add(SlideModel("String Url" or R.drawable, "title", true) Also you can add centerCrop scaleType for this image //INSTRUCTIONS!!!
+        imageList.add(
+            SlideModel(
+                "https://www.blessthismessplease.com/wp-content/uploads/2019/04/how-to-store-potatoes-1.jpg",
+                true
+            )
+        )
+        imageList.add(
+            SlideModel(
+                "https://i.insider.com/5c7819fbeb3ce82ac538ea33?width=1600&format=jpeg&auto=webp",
+                "We got the SODA!"))
+        imageList.add(SlideModel("https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/12_powerhouse_vegetables_slideshow/intro_cream_of_crop.jpg"))
+
+        val imageSlider = findViewById<ImageSlider>(R.id.image_slider)
+        imageSlider.setImageList(imageList)
+
+        fun clcik0() {
+
+            Toast.makeText(this, "", Toast.LENGTH_LONG).show()
+        }
+        //on Click for image slider
+        imageSlider.setItemClickListener(object : ItemClickListener {
+            override fun onItemSelected(position: Int) {
+                // You can listen here
+                when (position) {
+                    0 -> {
+                        clcik0()
+                    }
+                    1 -> { }
+                    else -> { }
+                }
+            }
+        })
+    }//END: private fun ISinit()
+
 
     private fun init() {
         getData()
         recycler_view.layoutManager =
-            GridLayoutManager(this, 2) //init Layout Manager : picks layout  // mContext = this ; this lets the adapter know that this current
-        adapterCategory = AdapterCategory(
-            this,
-            mList
-        )
-        // activty is using the adapter for the recycle view
+            GridLayoutManager(
+                this,
+                2
+            ) //init Layout Manager : picks layout  // mContext = this ; this lets the adapter know that this current
+        adapterCategory = AdapterCategory(this, mList) // activty is using the adapter for the recycle view
 
         recycler_view.adapter = adapterCategory //set the adapter to the recycler view
 
-       /* button_logout_Main.setOnClickListener{
-            var sharedPreferences = getSharedPreferences("my_login", Context.MODE_PRIVATE)
-            var editor = sharedPreferences.edit()
-            editor.clear() // clears the file
-            startActivity(Intent(this,LaunchActivity::class.java))
-        }*/
-    logout()
+        /* button_logout_Main.setOnClickListener{
+             var sharedPreferences = getSharedPreferences("my_login", Context.MODE_PRIVATE)
+             var editor = sharedPreferences.edit()
+             editor.clear() // clears the file
+             startActivity(Intent(this,LaunchActivity::class.java))
+         }*/
+        logout()
     }
 
     private fun logout() {
-        button_logout_Main.setOnClickListener{
+        button_logout_Main.setOnClickListener {
             var sessionManager = SessionManager(this)
             sessionManager.logout()
+            startActivity(Intent(this, LaunchActivity::class.java))
         }
     }
 
@@ -87,7 +123,7 @@ class MainActivity : AppCompatActivity() {
                 )
 
                 mList = categoryResponse.data
-               // Log.d("Category",mList[0].toString()) //debug check
+                // Log.d("Category",mList[0].toString()) //debug check
                 adapterCategory.setData(mList) // passing the new model class over the layout to overwrite and display it .
                 progress_bar.visibility = View.GONE
             },

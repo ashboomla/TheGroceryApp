@@ -51,7 +51,7 @@ var view = LayoutInflater.from(mContext).inflate(R.layout.row_product_fragment_a
            // itemView.text_view_desc.text = product.description
 
             Picasso
-                .with(mContext)
+                .get()
                 .load(Config.IMAGE_URL+product.image)//the path
                 .placeholder(R.drawable.image_place_holder)
                 .error(R.drawable.image_place_holder)

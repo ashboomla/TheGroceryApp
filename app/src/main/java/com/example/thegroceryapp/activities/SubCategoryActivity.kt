@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_sub_category.*
 
 class SubCategoryActivity : AppCompatActivity() {
 
-    lateinit var category: Category
+    lateinit var category: Category // because you will init after the subDetails come in from the AdapterCategory
     lateinit var adapterSubCategory: AdapterSubCategory // lateinit = late initizilation : has no value until you later initialize it
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,27 +29,18 @@ class SubCategoryActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        category = intent.getSerializableExtra(Category.KEY_CATEGORY) as Category//passing the whole object
-
-
+        category = intent.getSerializableExtra(Category.KEY_CATEGORY) as Category//passing the whole object from adapterCategory inner class fun bind
         adapterSubCategory = AdapterSubCategory(supportFragmentManager)
 
         Toast.makeText(this, category.catImage, Toast.LENGTH_SHORT).show()
-        var resCatName =
-            intent.extras?.getString("CATNAME") //pulling in the data with key from AdapterCategory
-        text_view.text = resCatName
+        text_view.text = category.catName
 
         getData(category.catId)
 
 
     }
     private fun getData(catId: Int) {//getting subcategory
-
-
-        var resCatId =
-            intent.extras?.getInt("CATID") //pulling in the data with key from AdapterCategory
-
-        Toast.makeText(this, "caught catID: $resCatId", Toast.LENGTH_LONG).show()
+      //  Toast.makeText(this, "caught catID: $category.catId", Toast.LENGTH_LONG).show()
 
         var requestQueue =
             Volley.newRequestQueue(this) //Request Queue keeps track of all your requests
@@ -71,8 +62,6 @@ class SubCategoryActivity : AppCompatActivity() {
 
                 view_pager.adapter = adapterSubCategory
                 tab_layout.setupWithViewPager(view_pager)
-
-               // Toast.makeText(this, "" + subcategoryResponse.data.size, Toast.LENGTH_SHORT).show()
 
             },
             Response.ErrorListener {

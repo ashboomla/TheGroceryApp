@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/category_grid_background"
-    android:padding="12dp">
+    android:padding="2dp">
 
     <ImageView
         android:id="@+id/image_view"
@@ -19,7 +19,7 @@
         android:layout_margin="5dp"
         android:drawablePadding="10dp"
         android:gravity="center"
-        android:padding="10dp"
+        android:padding="5dp"
         android:text="title"
         android:textColor="@color/tbText"
         android:textColorHint="@color/tbHint"

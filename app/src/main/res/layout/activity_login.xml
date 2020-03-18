@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:text="Login"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/button_background"
         android:padding="10dp"
@@ -60,5 +60,18 @@
         android:textSize="20dp"
         android:textStyle="bold"/>
 
+    <Button
+        android:id="@+id/button_skip_Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SKIP"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/button_background"
+        android:padding="10dp"
+        android:textColor="@color/tbText"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
 </LinearLayout>

@@ -1,6 +1,5 @@
 package com.example.thegroceryapp.activities
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,32 +14,27 @@ class LaunchActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch)
 
-        var sessionManager = SessionManager(this)
-        if(!sessionManager.checkLogin())
-        {
-            startActivity(Intent(this,LoginActivity::class.java))
-        }
-        else
-        {
-            startActivity(Intent(this,MainActivity::class.java))
-        }
         init()
+
+        var sessionManager = SessionManager(this)
+        if (!sessionManager.checkLogin()) {
+            startActivity(Intent(this, LoginActivity::class.java))
+        } else {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
     }
 
     private fun init() {
         button_login_Launch.setOnClickListener(this)
         button_register_Launch.setOnClickListener(this)
     }
-    override fun onClick(view: View?) {
-        when(view?.id) {
-            R.id.button_register_Launch -> {
-                startActivity(Intent(this,RegisterActivity::class.java))
-            }
-            R.id.button_login_Launch -> {
-                startActivity(Intent(this,LoginActivity::class.java))
-            }
-        }
 
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.button_register_Launch -> { startActivity(Intent(this, RegisterActivity::class.java)) }
+            R.id.button_login_Launch -> { startActivity(Intent(this, LoginActivity::class.java)) }
+        }
     }
 /*    private fun checkLogin() {
         var sharedPreference = getSharedPreferences("my_login", Context.MODE_PRIVATE)

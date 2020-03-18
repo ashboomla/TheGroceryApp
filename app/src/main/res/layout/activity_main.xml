@@ -1,40 +1,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@color/colorPrimaryDark">
+    android:padding="16dp">
 
-    <LinearLayout
+    <Button
+        android:id="@+id/button_logout_Main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/button_background"
+        android:drawableEnd="@drawable/ic_logout"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="Log Out"
+        android:textColor="@color/tbText"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        />
+    <com.denzcoskun.imageslider.ImageSlider
+        android:layout_margin="20dp"
+        android:id="@+id/image_slider"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        app:auto_cycle="true"
+        app:corner_radius="20"
+        app:delay="0"
+        app:period="1000"
+        app:placeholder="@drawable/image_place_holder"
+        app:error_image="@drawable/image_place_holder"
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/button_logout_Main"
-            android:text="Log Out"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="40dp"
-            android:background="@drawable/button_background"
-            android:drawableEnd="@drawable/ic_logout"
-            android:drawablePadding="10dp"
-            android:padding="10dp"
-            android:textColor="@color/tbText"
+        />
 
-            />
-    </LinearLayout>
-
-    <androidx.viewpager.widget.ViewPager
+<!--    <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="100dp">
 
-    </androidx.viewpager.widget.ViewPager>
+    </androidx.viewpager.widget.ViewPager>-->
 
 
     <androidx.recyclerview.widget.RecyclerView
