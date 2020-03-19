@@ -2,8 +2,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorPrimary">
-
+    android:background="@color/colorTertiary">
+    <include layout="@layout/app_bar"/>
+<!--
     <TextView
         android:id="@+id/text_view"
         android:layout_width="match_parent"
@@ -11,12 +12,15 @@
         android:text="title"
         android:textSize="30dp"
         android:textStyle="bold"
-        android:textColor="@color/tbText"/>
+        android:textColor="@color/tbText"/>-->
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/row_product_fragment_background"
+
+        />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"

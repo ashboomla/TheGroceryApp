@@ -26,7 +26,7 @@ var view = LayoutInflater.from(mContext).inflate(R.layout.row_product_fragment_a
         return mList.size
     }
 
-    /**
+    /** override fun onBindViewHolder
      * Binds the data from the model class to the placeholder in onCreateHolder
      * uses the method from inner class
      * get position tells which element in the array and then binds the model class data to the row data variables
@@ -47,15 +47,15 @@ var view = LayoutInflater.from(mContext).inflate(R.layout.row_product_fragment_a
     {
         fun bind(product:Product,position: Int)
         {
-            itemView.text_view_name.text = product.productName
-           // itemView.text_view_desc.text = product.description
+            itemView.text_view_name_APF.text = product.productName
+            itemView.text_view_price_APF.text = "$${product.price}"
 
             Picasso
                 .get()
                 .load(Config.IMAGE_URL+product.image)//the path
                 .placeholder(R.drawable.image_place_holder)
                 .error(R.drawable.image_place_holder)
-                .into(itemView.image_view_prod)
+                .into(itemView.image_view_APF)
                 //order is very important
 
             itemView.setOnClickListener{

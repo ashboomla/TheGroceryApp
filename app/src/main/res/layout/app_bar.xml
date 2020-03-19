@@ -1,0 +1,11 @@
+<androidx.appcompat.widget.Toolbar android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:titleTextColor="@color/tbText"
+    app:titleTextAppearance="@style/ABar"
+
+    android:id="@+id/myCustomToolbar"
+    >
+
+</androidx.appcompat.widget.Toolbar>

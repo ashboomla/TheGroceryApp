@@ -1,8 +1,11 @@
 package com.example.thegroceryapp.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.Response
@@ -15,6 +18,7 @@ import com.example.thegroceryapp.models.Category
 import com.example.thegroceryapp.models.SubCategoryResponse
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_sub_category.*
+import kotlinx.android.synthetic.main.app_bar.*
 
 class SubCategoryActivity : AppCompatActivity() {
 
@@ -24,16 +28,51 @@ class SubCategoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sub_category)
+        category = intent.getSerializableExtra(Category.KEY_CATEGORY) as Category//passing the whole object from adapterCategory inner class fun bind
 
         init()
+        setupToolBar()
+    }
+
+    private fun setupToolBar()
+    {
+        var toolbar = myCustomToolbar //assigns the id for the toolbar with the variable toolbar
+        toolbar.title ="${category.catName}"
+        setSupportActionBar(toolbar)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_cart -> {
+                Toast.makeText(this, "go to cart", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, CartActivity::class.java))
+            }
+
+            R.id.menu_home -> {
+                Toast.makeText(this, "go home", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this,MainActivity::class.java))
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+
+        }
+        return true
     }
 
     private fun init() {
-        category = intent.getSerializableExtra(Category.KEY_CATEGORY) as Category//passing the whole object from adapterCategory inner class fun bind
         adapterSubCategory = AdapterSubCategory(supportFragmentManager)
 
         Toast.makeText(this, category.catImage, Toast.LENGTH_SHORT).show()
-        text_view.text = category.catName
+      //  text_view.text = category.catName
 
         getData(category.catId)
 

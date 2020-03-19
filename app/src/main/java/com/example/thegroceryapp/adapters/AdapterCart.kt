@@ -47,8 +47,8 @@ class AdapterCart(var mContext: Context) :
             var dbHelper : DBHelper = DBHelper(mContext)
 
             itemView.text_view_product_name_RCA.text = product.productName
-            itemView.text_view_mrp_RCA.text = product.mrp.toString()
-            itemView.text_view_price_RCA.text = product.price.toString()
+            itemView.text_view_mrp_RCA.text = "$${product.mrp.toString()}"
+            itemView.text_view_price_RCA.text = "$${product.price.toString()}"
             itemView.text_view_qtyReq_RCA.text = product.quantity.toString()
 
             Picasso //get image
@@ -64,26 +64,25 @@ class AdapterCart(var mContext: Context) :
                 if (quan > 0) {
                     quan--
                     itemView.text_view_qtyReq_RCA.text = quan.toString()
-                    dbHelper.updateCartCount(product,false)
+                    dbHelper.updateCartCount(product,false) //update to db
 
                 }
+                if(quan==0){
+                    dbHelper.deleteCart(product) //remove from db
+                    removeItem(position) // remove from recyclerView
+                }
             }
+
             itemView.button_add.setOnClickListener {
                 quan++
                 itemView.text_view_qtyReq_RCA.text = quan.toString()
                 dbHelper.updateCartCount(product,true)
-
             }
-
 
             itemView.button_Remove_RCA.setOnClickListener{
              dbHelper.deleteCart(product) //remove from db
-             removeItem(position) // remove from recylerView
-
-
+             removeItem(position) // remove from recyclerView
             }
         }
-
     }
-
 }

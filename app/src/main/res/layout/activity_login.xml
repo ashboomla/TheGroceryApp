@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorPrimaryLight"
     android:padding="16dp">
 
 
@@ -14,64 +14,47 @@
         android:layout_margin="30dp"
         android:padding="20dp"
         android:textAlignment="center"
-        android:textColor="@color/tbText"
-        android:textSize="35dp"
-        android:textStyle="bold"/>
+        style="@style/textTitleStyle2"/>
 
 
     <EditText
         android:id="@+id/edit_text_email_Login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:hint="Enter Email"
         android:layout_margin="10dp"
         android:background="@drawable/textbox_background"
-        android:padding="10dp"
-        android:textColor="@color/tbText"
-        android:textColorHint="@color/tbHint"
         android:drawableStart="@drawable/ic_mail_outline_black_24dp"
-        android:drawablePadding="10dp"/>
+        style="@style/textSubStyle1"/>
 
 
     <EditText
         android:id="@+id/edit_text_password_Login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:hint="Enter Password"
         android:layout_margin="10dp"
         android:background="@drawable/textbox_background"
-        android:padding="10dp"
-        android:textColor="@color/tbText"
-        android:textColorHint="@color/tbHint"
         android:drawableStart="@drawable/ic_vpn_key_black_24dp"
-        android:drawablePadding="10dp"/>
+        style="@style/textSubStyle1"
+        android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/button_login_Login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="Login"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="25dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/button_background"
-        android:padding="10dp"
-        android:textColor="@color/tbText"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
+        style="@style/buttonStyle2"/>
 
     <Button
         android:id="@+id/button_skip_Login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="SKIP"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="25dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/button_background"
-        android:padding="10dp"
-        android:textColor="@color/tbText"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
+        style="@style/buttonStyle2"/>
 
 </LinearLayout>

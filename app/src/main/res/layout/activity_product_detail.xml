@@ -1,126 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimaryLight">
+
+        <include layout="@layout/app_bar" />
+
         <ImageView
             android:id="@+id/image_view_PDA"
+            android:layout_centerHorizontal="true"
             android:layout_width="250dp"
             android:layout_height="250dp"
+            android:layout_below="@+id/myCustomToolbar"
             android:layout_margin="15dp" />
 
         <TextView
             android:id="@+id/text_view_name_PDA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/textTitleStyle1"
             android:layout_below="@+id/image_view_PDA"
             android:layout_margin="5dp"
-            android:padding="10dp"
-            android:text="title"
-            android:textColor="@color/tbText"
-            android:textColorHint="@color/tbHint"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+            android:textSize="25dp"
+            android:text="title" />
 
         <TextView
             android:id="@+id/text_view_desc_PDA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/textSubStyle1"
             android:layout_below="@+id/text_view_name_PDA"
             android:layout_alignStart="@+id/text_view_name_PDA"
             android:layout_margin="5dp"
-            android:padding="10dp"
-            android:text="desc"
-            android:textColor="@color/tbText"
-            android:textColorHint="@color/tbHint"
-            android:textSize="20dp" />
+            android:text="desc" />
 
+        <!--Add to cart First Click-->
         <Button
             android:id="@+id/button_add_to_cart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_toRightOf="@+id/image_view_PDA"
-            android:background="@drawable/button_background"
+            style="@style/buttonStyle"
             android:layout_below="@+id/text_view_desc_PDA"
-            android:padding="2dp"
-            android:text="Add to Cart"
-            android:textSize="16dp" />
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:layout_toRightOf="@+id/button_add_Multi_PDA"
+            android:background="@drawable/button_background"
+            android:text="Add to Cart" />
+
+
+        <!--Add to cart all other clicks-->
+        <Button
+            android:id="@+id/button_add_Multi_PDA"
+            style="@style/buttonStyle2"
+            android:layout_below="@+id/text_view_desc_PDA"
+            android:layout_toRightOf="@+id/text_view_mrp_PDA"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_shape_rounded_left"
+            android:text="+"
+            android:textSize="20dp"
+            android:visibility="invisible"
+
+            />
 
         <Button
+            android:id="@+id/button_Req_Multi_PDA"
+            style="@style/buttonStyle2"
+            android:layout_below="@id/text_view_desc_PDA"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="0dp"
+            android:layout_toRightOf="@+id/button_add_Multi_PDA"
+            android:textColor="@color/tbText"
+            android:background="@drawable/row_product_fragment_background"
+            android:clickable="false"
+            android:padding="0dp"
+            android:text="1"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/button_sub_Multi_PDA"
+            style="@style/buttonStyle2"
+            android:layout_below="@+id/text_view_desc_PDA"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/button_Req_Multi_PDA"
+            android:background="@drawable/button_shape_rounded_right"
+            android:padding="0dp"
+            android:text="-"
+            android:visibility="invisible"/>
+        <!--        end of clicks-->
+      <!--  <Button
             android:id="@+id/button_go_to_cart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            style="@style/buttonStyle"
+            android:layout_below="@+id/text_view_mrp_PDA"
+            android:layout_marginTop="20dp"
             android:layout_toRightOf="@+id/image_view_PDA"
             android:background="@drawable/button_background"
-            android:layout_below="@+id/button_add_to_cart"
-            android:padding="2dp"
-            android:text="Go to Cart"
-            android:textSize="16dp" />
+            android:text="Go to Cart" />-->
 
-        <TextView
+       <!-- <TextView
             android:id="@+id/text_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/textSubStyle1"
             android:layout_below="@+id/text_view_desc_PDA"
             android:layout_marginTop="50dp"
-            android:padding="10dp"
-            android:text="PRICE"
-            android:textColor="@color/tbText"
-            android:textColorHint="@color/tbHint"
-            android:textSize="20dp" />
+            android:text="PRICE" />
 
-        <TextView
-            android:id="@+id/text_view_price_PDA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text_price"
-            android:layout_marginTop="25dp"
-            android:padding="10dp"
-            android:text="0.00"
-            android:textColor="@color/tbText"
-            android:textColorHint="@color/tbHint"
-            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/text_mrp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/textSubStyle1"
             android:layout_below="@+id/text_view_desc_PDA"
-            android:layout_marginTop="50dp"
             android:layout_marginLeft="25dp"
-            android:padding="10dp"
-            android:text="MRP"
-            android:textColor="@color/tbText"
+            android:layout_marginTop="50dp"
             android:layout_toRightOf="@+id/text_price"
-            android:textColorHint="@color/tbHint"
-            android:textSize="20dp" />
+            android:text="MRP" />-->
+
+        <TextView
+            android:id="@+id/text_view_price_PDA"
+            style="@style/textSubStyle1"
+            android:layout_below="@+id/text_view_desc_PDA"
+            android:layout_marginTop="25dp"
+            android:text="0.00" />
+
 
         <TextView
             android:id="@+id/text_view_mrp_PDA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text_price"
-            android:layout_marginTop="25dp"
+            android:background="@drawable/shape_strikethrough"
+            style="@style/textSubStyle1"
+            android:layout_below="@+id/text_view_desc_PDA"
             android:layout_marginLeft="25dp"
-            android:padding="10dp"
-            android:text="0.00"
+            android:layout_marginTop="25dp"
             android:layout_toRightOf="@+id/text_view_price_PDA"
-            android:textColor="@color/tbText"
-            android:textColorHint="@color/tbHint"
-            android:textSize="20dp" />
+            android:text="0.00" />
 
     </RelativeLayout>
 
 
-    </ScrollView>
+</ScrollView>
 

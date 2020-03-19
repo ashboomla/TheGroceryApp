@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
@@ -24,6 +26,7 @@ import com.example.thegroceryapp.models.Category
 import com.example.thegroceryapp.models.CategoryResponse
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         ISinit() // initialize imageSlider
         init() // initialize all else
+        setupToolBar()
     }
 
     private fun ISinit() { //imageSlider Init
@@ -51,7 +55,9 @@ class MainActivity : AppCompatActivity() {
         imageList.add(
             SlideModel(
                 "https://i.insider.com/5c7819fbeb3ce82ac538ea33?width=1600&format=jpeg&auto=webp",
-                "We got the SODA!"))
+                "We got the SODA!"
+            )
+        )
         imageList.add(SlideModel("https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/12_powerhouse_vegetables_slideshow/intro_cream_of_crop.jpg"))
 
         val imageSlider = findViewById<ImageSlider>(R.id.image_slider)
@@ -69,13 +75,45 @@ class MainActivity : AppCompatActivity() {
                     0 -> {
                         clcik0()
                     }
-                    1 -> { }
-                    else -> { }
+                    1 -> {
+                    }
+                    else -> {
+                    }
                 }
             }
         })
     }//END: private fun ISinit()
 
+    private fun setupToolBar() {
+        var toolbar = myCustomToolbar //assigns the id for the toolbar with the variable toolbar
+        toolbar.title = "Category"
+        setSupportActionBar(toolbar)
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_cart -> {
+                Toast.makeText(this, "go to cart", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, CartActivity::class.java))
+            }
+
+            R.id.menu_home -> {
+                Toast.makeText(this, "go to cart", Toast.LENGTH_SHORT).show()
+
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+
+        }
+        return true
+    }
 
     private fun init() {
         getData()
@@ -84,7 +122,8 @@ class MainActivity : AppCompatActivity() {
                 this,
                 2
             ) //init Layout Manager : picks layout  // mContext = this ; this lets the adapter know that this current
-        adapterCategory = AdapterCategory(this, mList) // activty is using the adapter for the recycle view
+        adapterCategory =
+            AdapterCategory(this, mList) // activty is using the adapter for the recycle view
 
         recycler_view.adapter = adapterCategory //set the adapter to the recycler view
 

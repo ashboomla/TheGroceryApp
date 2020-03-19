@@ -102,7 +102,7 @@ class DBHelper(var mContext: Context) :
     }
 
     // Updating Count
-    fun updateCartCount(updateCart: Product, x : Boolean) {
+    fun updateCartCount(updateCart: Product, isIncrease : Boolean) {
 
         var query = "select * from $TABLE_NAME where $COLUMNS_ID=?"
         var cursor = db.rawQuery(query, arrayOf(updateCart._id.toString()))
@@ -116,7 +116,7 @@ class DBHelper(var mContext: Context) :
         contentValues.put(COLUMNS_PRODUCT_NAME, updateCart.productName)
         contentValues.put(COLUMNS_PRICE, updateCart.price)
 
-        if(x==true) {
+        if(isIncrease==true) {
             contentValues.put(COLUMNS_QUANTITY, quantity + 1)
         }
         else{            contentValues.put(COLUMNS_QUANTITY, quantity - 1)
@@ -130,6 +130,18 @@ class DBHelper(var mContext: Context) :
         Log.d("db test", "add sale")
 
         //hint:
+    }
+
+    fun getCartCount(product:Product) : Int{
+
+        var query = "select * from $TABLE_NAME where $COLUMNS_ID=?"
+        var cursor = db.rawQuery(query, arrayOf(product._id.toString()))
+
+        var quantity = 0
+        if (cursor != null && cursor.moveToFirst()){
+            quantity = cursor.getInt(cursor.getColumnIndex(COLUMNS_QUANTITY))
+        }
+        return quantity
     }
 
     fun deleteCart(deleteCart: Product) {
