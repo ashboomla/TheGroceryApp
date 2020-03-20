@@ -1,13 +1,175 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#e6e6e6">
-    <include layout="@layout/app_bar"/>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recycler_view_cart"
-        />
-</LinearLayout>
+        android:background="#e6e6e6"
+        android:orientation="vertical">
+
+        <include layout="@layout/app_bar" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_cart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+        <RelativeLayout
+            android:id="@+id/totals_block_layout_CA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+            <TextView
+                style="@style/textTitleStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@+id/image_view_RCA"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Total Price"
+                android:textSize="20dp"
+                android:textStyle="normal" />
+
+            <!--TOTAL PRICE-->
+            <TextView
+                android:id="@+id/text_view_total_price_CA"
+                style="@style/textTitleStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@+id/image_view_RCA"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="$$$"
+                android:textSize="20dp"
+                android:textStyle="normal" />
+
+            <TextView
+                style="@style/textTitleStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_view_total_price_CA"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@+id/image_view_RCA"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Discount Price"
+                android:textSize="20dp"
+                android:textStyle="normal" />
+
+            <!--Discount Price-->
+            <TextView
+                android:id="@+id/text_view_discount_price_CA"
+                style="@style/textTitleStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_view_total_price_CA"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@+id/image_view_RCA"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="$$$"
+                android:textSize="20dp"
+                android:textStyle="normal" />
+
+            <TextView
+                style="@style/textTitleStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_view_discount_price_CA"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@+id/image_view_RCA"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Delivery Charges"
+                android:textSize="20dp"
+                android:textStyle="normal" />
+
+            <!--Delivery Charges-->
+            <TextView
+                android:id="@+id/text_view_delivery_charges_CA"
+                style="@style/textTitleStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_view_discount_price_CA"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@+id/image_view_RCA"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="$$$"
+                android:textSize="20dp"
+                android:textStyle="normal" />
+
+            <TextView
+                style="@style/textTitleStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_view_delivery_charges_CA"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@+id/image_view_RCA"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Price To Pay"
+                android:textSize="20dp"
+                android:textStyle="normal" />
+
+            <!--Delivery Charges-->
+            <TextView
+                android:id="@+id/text_view_checkout_price_CA"
+                style="@style/textTitleStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_view_delivery_charges_CA"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@+id/image_view_RCA"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="$$$"
+                android:textSize="20dp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/button_checkout_CA"
+                style="@style/buttonStyle2"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/text_view_checkout_price_CA"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/button_background"
+                android:text="Checkout"
+                android:textSize="20dp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/no_items_CA"
+            style="@style/textTitleStyle1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Your Cart is Empty"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:visibility="invisible"/>
+
+    </LinearLayout>
+
+
+</ScrollView>

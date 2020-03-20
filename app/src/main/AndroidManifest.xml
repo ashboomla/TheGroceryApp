@@ -12,13 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities_checkout.OrderConfirmationActivity"></activity>
+        <activity android:name=".activities_checkout.AddAddressActivity"></activity>
+        <activity android:name=".activities_checkout.OrderConfirmationActivity" />
         <activity android:name=".activities_checkout.PaymentActivity" />
         <activity android:name=".activities_checkout.SelectAddressActivity" />
         <activity android:name=".activities_checkout.CartActivity" />
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.RegisterActivity" />
-        <activity android:name=".activities.LaunchActivity">
+        <activity android:name=".activities_begin.LoginActivity" />
+        <activity android:name=".activities_begin.RegisterActivity" />
+        <activity android:name=".activities_begin.LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

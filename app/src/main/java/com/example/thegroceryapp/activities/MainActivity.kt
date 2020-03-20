@@ -126,23 +126,8 @@ class MainActivity : AppCompatActivity() {
             AdapterCategory(this, mList) // activty is using the adapter for the recycle view
 
         recycler_view.adapter = adapterCategory //set the adapter to the recycler view
-
-        /* button_logout_Main.setOnClickListener{
-             var sharedPreferences = getSharedPreferences("my_login", Context.MODE_PRIVATE)
-             var editor = sharedPreferences.edit()
-             editor.clear() // clears the file
-             startActivity(Intent(this,LaunchActivity::class.java))
-         }*/
-        logout()
     }
 
-    private fun logout() {
-        button_logout_Main.setOnClickListener {
-            var sessionManager = SessionManager(this)
-            sessionManager.logout()
-            startActivity(Intent(this, LaunchActivity::class.java))
-        }
-    }
 
     private fun getData() {
         val url = "https://apolis-grocery.herokuapp.com/api/category/"
@@ -166,9 +151,7 @@ class MainActivity : AppCompatActivity() {
                 adapterCategory.setData(mList) // passing the new model class over the layout to overwrite and display it .
                 progress_bar.visibility = View.GONE
             },
-            Response.ErrorListener {
-                Log.e("data", it.message)
-            })
+            Response.ErrorListener { Log.e("data", it.message) })
 
         requestQueue.add(stringRequest) //adding request to another object
     }

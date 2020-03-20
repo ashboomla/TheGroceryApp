@@ -1,10 +1,11 @@
-package com.example.thegroceryapp.activities
+package com.example.thegroceryapp.activities_begin
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.thegroceryapp.R
+import com.example.thegroceryapp.activities.MainActivity
 import com.example.thegroceryapp.helpers.SessionManager
 import kotlinx.android.synthetic.main.activity_launch.*
 

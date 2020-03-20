@@ -1,4 +1,4 @@
-package com.example.thegroceryapp.activities
+package com.example.thegroceryapp.activities_begin
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

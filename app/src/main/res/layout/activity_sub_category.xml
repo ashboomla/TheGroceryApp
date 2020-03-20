@@ -4,15 +4,6 @@
     android:orientation="vertical"
     android:background="@color/colorTertiary">
     <include layout="@layout/app_bar"/>
-<!--
-    <TextView
-        android:id="@+id/text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="title"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:textColor="@color/tbText"/>-->
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"

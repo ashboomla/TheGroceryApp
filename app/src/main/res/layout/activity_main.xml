@@ -10,18 +10,6 @@
     <include layout="@layout/app_bar"/>
 
 
-    <Button
-        android:id="@+id/button_logout_Main"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="40dp"
-        android:background="@drawable/button_background"
-        android:drawableEnd="@drawable/ic_logout"
-        android:text="Log Out"
-        android:textColor="@color/tbText"
-        style="@style/buttonStyle2"
-        />
     <com.denzcoskun.imageslider.ImageSlider
         android:layout_margin="10dp"
         android:id="@+id/image_slider"

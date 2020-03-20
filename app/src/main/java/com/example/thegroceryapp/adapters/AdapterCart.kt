@@ -52,7 +52,9 @@ class AdapterCart(var mContext: Context) :
             itemView.text_view_price_RCA.text = "$${product.price.toString()}"
             itemView.text_view_qtyReq_RCA.text = product.quantity.toString()
             var total : Double = round(product.price * product.quantity)
-            itemView.text_view_total_RCA.text = "$${total.toString()}"
+            itemView.text_view_total_RCA.text = "$${String.format("%.2f",total).toString()}"
+
+           // String.format("%.2f",<your String>) // this gives you 2 decimal places
 
             Picasso //get image
                 .get()
