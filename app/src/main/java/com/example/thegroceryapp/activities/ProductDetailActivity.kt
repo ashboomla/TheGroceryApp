@@ -7,17 +7,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.core.view.isGone
 import com.example.thegroceryapp.R
+import com.example.thegroceryapp.activities_checkout.CartActivity
 import com.example.thegroceryapp.appData.Config
 import com.example.thegroceryapp.helpers.DBHelper
 import com.example.thegroceryapp.models.Product
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_product_detail.*
 import kotlinx.android.synthetic.main.app_bar.*
-import kotlinx.android.synthetic.main.row_cart_adapter.*
-import kotlinx.android.synthetic.main.row_cart_adapter.view.*
-import kotlinx.android.synthetic.main.row_cart_adapter.view.text_view_qtyReq_RCA
 
 class ProductDetailActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var product: Product
@@ -57,16 +54,20 @@ class ProductDetailActivity : AppCompatActivity(), View.OnClickListener {
             R.id.menu_cart -> {
                 Toast.makeText(this, "go to cart", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, CartActivity::class.java))
+
             }
 
             R.id.menu_home -> {
+                //finish()//try in front it will still work
                 Toast.makeText(this, "go to cart", Toast.LENGTH_SHORT).show()
-
+            }
+            android.R.id.home ->
+            {
+                finish()
             }
             else -> {
                 super.onOptionsItemSelected(item)
             }
-
         }
         return true
     }
@@ -167,10 +168,18 @@ class ProductDetailActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onRestart() {
+
         button_Req_Multi_PDA.text = getQuantity(product).toString() //important
 
+
+        if(button_Req_Multi_PDA.text=="0"){
+            button_add_to_cart.visibility = View.VISIBLE // will hide the button.
+            button_add_Multi_PDA.visibility = View.GONE  //will show the button
+            button_Req_Multi_PDA.visibility = View.GONE
+            button_sub_Multi_PDA.visibility = View.GONE
+
+        }
 
         super.onRestart()
     }
 }
-

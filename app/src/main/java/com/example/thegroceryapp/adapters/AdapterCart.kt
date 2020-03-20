@@ -11,6 +11,7 @@ import com.example.thegroceryapp.helpers.DBHelper
 import com.example.thegroceryapp.models.Product
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.row_cart_adapter.view.*
+import kotlin.math.round
 
 class AdapterCart(var mContext: Context) :
     RecyclerView.Adapter<AdapterCart.MyViewHolder>() {
@@ -50,6 +51,8 @@ class AdapterCart(var mContext: Context) :
             itemView.text_view_mrp_RCA.text = "$${product.mrp.toString()}"
             itemView.text_view_price_RCA.text = "$${product.price.toString()}"
             itemView.text_view_qtyReq_RCA.text = product.quantity.toString()
+            var total : Double = round(product.price * product.quantity)
+            itemView.text_view_total_RCA.text = "$${total.toString()}"
 
             Picasso //get image
                 .get()

@@ -1,4 +1,4 @@
-package com.example.thegroceryapp.activities
+package com.example.thegroceryapp.activities_checkout
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,13 +9,11 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thegroceryapp.R
+import com.example.thegroceryapp.activities.MainActivity
 import com.example.thegroceryapp.adapters.AdapterCart
 import com.example.thegroceryapp.helpers.DBHelper
-import com.example.thegroceryapp.models.Product
 import kotlinx.android.synthetic.main.activity_cart.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar.*
-import kotlinx.android.synthetic.main.row_cart_adapter.*
 
 class CartActivity : AppCompatActivity() {
     lateinit var adapterCart: AdapterCart
@@ -54,8 +52,9 @@ class CartActivity : AppCompatActivity() {
             R.id.menu_home -> {
                 Toast.makeText(this, "go home", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, MainActivity::class.java))
-
             }
+            android.R.id.home ->
+            {finish()}
             else -> {
                 super.onOptionsItemSelected(item)
             }

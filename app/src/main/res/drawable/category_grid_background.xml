@@ -3,10 +3,10 @@
 
     <solid android:color="@color/colorPrimaryLight" />
 
-    <stroke
+    <!--<stroke
         android:width="2dp"
         android:color="@color/tbHint"
-         />
+         />-->
 
     <padding android:padding="1dp"  />
 </shape>

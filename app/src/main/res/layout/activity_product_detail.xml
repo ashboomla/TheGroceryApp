@@ -3,7 +3,8 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#e6e6e6">
 
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -41,7 +42,7 @@
         <Button
             android:id="@+id/button_add_to_cart"
             style="@style/buttonStyle"
-            android:layout_below="@+id/text_view_desc_PDA"
+            android:layout_below="@+id/text_view_price_PDA"
             android:layout_marginTop="20dp"
             android:padding="5dp"
             android:layout_toRightOf="@+id/button_add_Multi_PDA"
@@ -53,7 +54,7 @@
         <Button
             android:id="@+id/button_add_Multi_PDA"
             style="@style/buttonStyle2"
-            android:layout_below="@+id/text_view_desc_PDA"
+            android:layout_below="@+id/text_view_price_PDA"
             android:layout_toRightOf="@+id/text_view_mrp_PDA"
             android:layout_marginLeft="2dp"
             android:layout_marginTop="20dp"
@@ -67,7 +68,7 @@
         <Button
             android:id="@+id/button_Req_Multi_PDA"
             style="@style/buttonStyle2"
-            android:layout_below="@id/text_view_desc_PDA"
+            android:layout_below="@id/text_view_price_PDA"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="0dp"
@@ -82,7 +83,7 @@
         <Button
             android:id="@+id/button_sub_Multi_PDA"
             style="@style/buttonStyle2"
-            android:layout_below="@+id/text_view_desc_PDA"
+            android:layout_below="@+id/text_view_price_PDA"
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@+id/button_Req_Multi_PDA"
             android:background="@drawable/button_shape_rounded_right"
@@ -128,10 +129,9 @@
             android:id="@+id/text_view_mrp_PDA"
             android:background="@drawable/shape_strikethrough"
             style="@style/textSubStyle1"
-            android:layout_below="@+id/text_view_desc_PDA"
+            android:layout_below="@+id/text_view_price_PDA"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="25dp"
-            android:layout_toRightOf="@+id/text_view_price_PDA"
             android:text="0.00" />
 
     </RelativeLayout>

@@ -1,6 +1,5 @@
 package com.example.thegroceryapp.activities
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,6 +18,7 @@ import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.thegroceryapp.R
+import com.example.thegroceryapp.activities_checkout.CartActivity
 import com.example.thegroceryapp.adapters.AdapterCategory
 import com.example.thegroceryapp.appData.Endpoints
 import com.example.thegroceryapp.helpers.SessionManager

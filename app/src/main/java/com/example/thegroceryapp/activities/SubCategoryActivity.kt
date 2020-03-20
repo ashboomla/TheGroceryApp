@@ -12,6 +12,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.thegroceryapp.R
+import com.example.thegroceryapp.activities_checkout.CartActivity
 import com.example.thegroceryapp.adapters.AdapterSubCategory
 import com.example.thegroceryapp.appData.Endpoints
 import com.example.thegroceryapp.models.Category
@@ -60,6 +61,10 @@ class SubCategoryActivity : AppCompatActivity() {
                 Toast.makeText(this, "go home", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this,MainActivity::class.java))
             }
+
+            android.R.id.home ->
+            {finish()}
+
             else -> {
                 super.onOptionsItemSelected(item)
             }
@@ -90,25 +95,15 @@ class SubCategoryActivity : AppCompatActivity() {
                 Log.d("data", it.toString()) // store it in log //must put it.tostring
 
                 var gson = GsonBuilder().create() //creates an instance of gson
-                var subcategoryResponse = gson.fromJson(
-                    it.toString(),
-                    SubCategoryResponse::class.java
-                )
+                var subcategoryResponse = gson.fromJson(it.toString(), SubCategoryResponse::class.java)
                 var mSubList = subcategoryResponse.data
                 for (sub in mSubList) {
                     adapterSubCategory.addFragment(sub)
                 }
-
                 view_pager.adapter = adapterSubCategory
                 tab_layout.setupWithViewPager(view_pager)
-
             },
-            Response.ErrorListener {
-                Log.e("data", it?.message)
-            })
-
+            Response.ErrorListener { Log.e("data", it?.message) })
         requestQueue?.add(stringRequest) //adding request to another object
-
-
     }
 }
