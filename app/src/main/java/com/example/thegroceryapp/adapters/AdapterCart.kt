@@ -16,6 +16,8 @@ import kotlin.math.round
 class AdapterCart(var mContext: Context) :
     RecyclerView.Adapter<AdapterCart.MyViewHolder>() {
     private var mList =  ArrayList<Product>()
+    var listener: AdapterInteraction?=null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterCart.MyViewHolder {
         var view = LayoutInflater.from(mContext).inflate(R.layout.row_cart_adapter, parent, false)
         return MyViewHolder(view)
@@ -35,30 +37,33 @@ class AdapterCart(var mContext: Context) :
         notifyDataSetChanged() //
     }
 
+    fun refresh(position: Int){
+        notifyDataSetChanged()
+
+    }
     fun removeItem(position: Int) {
         mList.removeAt(position)
         notifyDataSetChanged()
     }
 
-    interface CartCustomInterface{
-        fun onItemCLicked(position: Int, view : View)
+    interface AdapterInteraction{
+        fun onItemCLicked(position: Int,view: View)
     }
 
-    fun setMyCustomInterface(CartCustom:CartCustomInterface)
+    fun setAdapterInteraction(myAdapterInteraction:AdapterInteraction)
     {
-      //  listener = CartCustom
+        listener = myAdapterInteraction
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(product:Product,position: Int)
         {
-
-            var dbHelper : DBHelper = DBHelper(mContext)
+          //  var dbHelper : DBHelper = DBHelper(mContext)
 
             itemView.text_view_product_name_RCA.text = product.productName
-            itemView.text_view_mrp_RCA.text = "$${String.format("%.2f",product.mrp.toString())}"
-            itemView.text_view_price_RCA.text = "$${String.format("%.2f",product.price.toString())}"
+            itemView.text_view_mrp_RCA.text = "$${product.mrp.toString()}"
+            itemView.text_view_price_RCA.text = "$${product.price.toString()}"
             itemView.text_view_qtyReq_RCA.text = product.quantity.toString()
 
             var total : Double = (product.price * product.quantity)
@@ -66,10 +71,7 @@ class AdapterCart(var mContext: Context) :
             var savings : Double = (totalmrp - total)
 
             itemView.text_view_total_RCA.text = "$${String.format("%.2f",total).toString()}"
-
-
-
-           // String.format("%.2f",<your String>) // this gives you 2 decimal places
+            // String.format("%.2f",<your String>) // gives 2 decimal places
 
             Picasso //get image
                 .get()
@@ -78,32 +80,10 @@ class AdapterCart(var mContext: Context) :
                 .error(R.drawable.image_place_holder)
                 .into(itemView.image_view_RCA)
 
-
             var quan: Int = itemView.text_view_qtyReq_RCA.text.toString().toInt()
-
-            itemView.button_sub.setOnClickListener {
-                if (quan > 0) {
-                    quan--
-                    itemView.text_view_qtyReq_RCA.text = quan.toString()
-                    dbHelper.updateCartCount(product,false) //update to db
-
-                }
-                if(quan==0){
-                    dbHelper.deleteCart(product) //remove from db
-                    removeItem(position) // remove from recyclerView
-                }
-            }
-
-            itemView.button_add.setOnClickListener {
-                quan++
-                itemView.text_view_qtyReq_RCA.text = quan.toString()
-                dbHelper.updateCartCount(product,true)
-            }
-
-            itemView.button_Remove_RCA.setOnClickListener{
-             dbHelper.deleteCart(product) //remove from db
-             removeItem(position) // remove from recyclerView
-            }
+            itemView.button_sub.setOnClickListener { /*it:View!*/ listener?.onItemCLicked(position,it) }
+            itemView.button_add.setOnClickListener { listener?.onItemCLicked(position,it) }
+            itemView.button_Remove_RCA.setOnClickListener{ listener?.onItemCLicked(position,it) }
         }
     }
 }

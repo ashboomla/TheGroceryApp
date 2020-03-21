@@ -3,12 +3,9 @@
     android:layout_height="match_parent"
     android:background="#e6e6e6">
 
-    <RadioGroup
-        android:id="@+id/radioGroup_SAA"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -31,137 +28,11 @@
                 android:textStyle="bold" />
 
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
 
-
-                <TextView
-                    android:id="@+id/text_view_address_type_SAA"
-                    style="@style/textSubStyle2"
-                    android:text="Type"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/text_view_name_SAA"
-                    style="@style/textSubStyle2"
-                    android:layout_below="@+id/text_view_address_type_SAA"
-                    android:text="Name"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/text_view_address_SAA"
-                    style="@style/textSubStyle2"
-                    android:layout_below="@+id/text_view_name_SAA"
-                    android:text="Address"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/text_view_zip_SAA"
-                    style="@style/textSubStyle2"
-                    android:layout_below="@+id/text_view_address_SAA"
-                    android:text="Zip"
-                    android:textSize="15dp" />
-
-                <Button
-                    android:id="@+id/button_Edit_SAA"
-                    style="@style/buttonStyle2"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/text_view_zip_SAA"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/button_background"
-                    android:text="Edit"
-                    android:textSize="15dp" />
-
-                <Button
-                    android:id="@+id/button_Delete_SAA"
-                    style="@style/buttonStyle2"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/text_view_zip_SAA"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_toRightOf="@+id/button_Edit_SAA"
-                    android:background="@drawable/button_background"
-                    android:text="Delete"
-                    android:textSize="15dp" />
-
-                <!--2nd set begins -->
-                <TextView
-                    android:id="@+id/text_view_name2_SAA"
-                    style="@style/textSubStyle2"
-                    android:layout_below="@+id/text_view_type2_SAA"
-                    android:text="Name"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/text_view_address_type2_SAA"
-                    style="@style/textSubStyle2"
-                    android:layout_below="@+id/text_view_name2_SAA"
-                    android:text="Address"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/text_view_zip2_SAA"
-                    style="@style/textSubStyle2"
-                    android:layout_below="@+id/text_view_address_type2_SAA"
-                    android:text="Zip"
-                    android:textSize="15dp" />
-
-                <Button
-                    android:id="@+id/button_Edit2_SAA"
-                    style="@style/buttonStyle2"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/text_view_zip2_SAA"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/button_background"
-                    android:text="Edit"
-                    android:textSize="15dp" />
-
-                <Button
-                    android:id="@+id/button_Delete2_SAA"
-                    style="@style/buttonStyle2"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/text_view_zip2_SAA"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_toRightOf="@+id/button_Edit_SAA"
-                    android:background="@drawable/button_background"
-                    android:text="Delete"
-                    android:textSize="15dp" />
-
-
-                <TextView
-                    android:id="@+id/text_view_type2_SAA"
-                    style="@style/textSubStyle2"
-                    android:layout_below="@+id/button_Delete_SAA"
-                    android:layout_alignTop="@+id/radioButton_address2_SAA"
-                    android:text="Type"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-
-
-                <RadioButton
-                    android:id="@+id/radioButton_address1_SAA"
-                    android:layout_width="wrap_content"
-                    android:layout_height="275dp"
-                    android:layout_alignParentRight="true" />
-
-                <RadioButton
-                    android:id="@+id/radioButton_address2_SAA"
-                    android:layout_width="wrap_content"
-                    android:layout_height="275dp"
-                    android:layout_below="@+id/radioButton_address1_SAA"
-                    android:layout_alignParentRight="true" />
-
-
-            </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_select_address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <Button
                 android:id="@+id/button_continue_SAA"
@@ -176,6 +47,5 @@
                 android:textSize="20dp" />
 
         </LinearLayout>
-    </RadioGroup>
 
 </ScrollView>
