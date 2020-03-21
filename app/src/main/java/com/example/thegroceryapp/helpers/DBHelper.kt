@@ -161,4 +161,9 @@ class DBHelper(var mContext: Context) :
         var count = cursor.count
         return count != 0
     }
+
+    fun cartTotal(product:Product)
+    {
+
+    }
 }

@@ -40,6 +40,15 @@ class AdapterCart(var mContext: Context) :
         notifyDataSetChanged()
     }
 
+    interface CartCustomInterface{
+        fun onItemCLicked(position: Int, view : View)
+    }
+
+    fun setMyCustomInterface(CartCustom:CartCustomInterface)
+    {
+      //  listener = CartCustom
+    }
+
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(product:Product,position: Int)
@@ -48,11 +57,17 @@ class AdapterCart(var mContext: Context) :
             var dbHelper : DBHelper = DBHelper(mContext)
 
             itemView.text_view_product_name_RCA.text = product.productName
-            itemView.text_view_mrp_RCA.text = "$${product.mrp.toString()}"
-            itemView.text_view_price_RCA.text = "$${product.price.toString()}"
+            itemView.text_view_mrp_RCA.text = "$${String.format("%.2f",product.mrp.toString())}"
+            itemView.text_view_price_RCA.text = "$${String.format("%.2f",product.price.toString())}"
             itemView.text_view_qtyReq_RCA.text = product.quantity.toString()
-            var total : Double = round(product.price * product.quantity)
+
+            var total : Double = (product.price * product.quantity)
+            var totalmrp : Double = (product.mrp * product.quantity)
+            var savings : Double = (totalmrp - total)
+
             itemView.text_view_total_RCA.text = "$${String.format("%.2f",total).toString()}"
+
+
 
            // String.format("%.2f",<your String>) // this gives you 2 decimal places
 
@@ -65,6 +80,7 @@ class AdapterCart(var mContext: Context) :
 
 
             var quan: Int = itemView.text_view_qtyReq_RCA.text.toString().toInt()
+
             itemView.button_sub.setOnClickListener {
                 if (quan > 0) {
                     quan--
