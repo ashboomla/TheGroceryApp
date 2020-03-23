@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thegroceryapp.R
 import com.example.thegroceryapp.activities.ProductDetailActivity
+import com.example.thegroceryapp.activities_checkout.CartActivity
 import com.example.thegroceryapp.appData.Config
+import com.example.thegroceryapp.helpers.DBHelper
 import com.example.thegroceryapp.models.Product
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.row_product_fragment_adapter.view.*
@@ -16,10 +18,13 @@ import kotlinx.android.synthetic.main.row_product_fragment_adapter.view.*
 class AdapterProductFragment(var mContext: Context) :
     RecyclerView.Adapter<AdapterProductFragment.MyViewHolder>() {
 
-    private var mList : ArrayList<Product> = ArrayList()
+    private var mList: ArrayList<Product> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-var view = LayoutInflater.from(mContext).inflate(R.layout.row_product_fragment_adapter,parent,false)
-    return MyViewHolder(view)
+        var view = LayoutInflater.from(mContext)
+            .inflate(R.layout.row_product_fragment_adapter, parent, false)
+        return MyViewHolder(view)
+
+
     }
 
     override fun getItemCount(): Int {
@@ -32,38 +37,38 @@ var view = LayoutInflater.from(mContext).inflate(R.layout.row_product_fragment_a
      * get position tells which element in the array and then binds the model class data to the row data variables
      */
     override fun onBindViewHolder(holder: AdapterProductFragment.MyViewHolder, position: Int) {
-    var product = mList.get(position)
-        holder.bind(product,position) //bind view happens in inner class
+        var product = mList.get(position)
+        holder.bind(product, position) //bind view happens in inner class
     }
 
 
-    fun setData(list:ArrayList<Product>)
+
+    fun setData(list: ArrayList<Product>) //gives an instance of the array list (mlist) into list so you can use it from another class
     {
         mList = list
         notifyDataSetChanged() //sends the msg to the adapter to recreate all the row and fill it with the updated data
     }
 
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-    {
-        fun bind(product:Product,position: Int)
-        {
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(product: Product, position: Int) {
             itemView.text_view_name_APF.text = product.productName
             itemView.text_view_price_APF.text = "$${product.price}"
 
             Picasso
                 .get()
-                .load(Config.IMAGE_URL+product.image)//the path
+                .load(Config.IMAGE_URL + product.image)//the path
                 .placeholder(R.drawable.image_place_holder)
                 .error(R.drawable.image_place_holder)
                 .into(itemView.image_view_APF)
-                //order is very important
+            //order is very important
 
-            itemView.setOnClickListener{
-                var productDetailIntent = Intent(mContext,ProductDetailActivity::class.java)
-                productDetailIntent.putExtra(Product.KEY_PRODUCT,product)
+            itemView.setOnClickListener {
+                var productDetailIntent = Intent(mContext, ProductDetailActivity::class.java)
+                productDetailIntent.putExtra(Product.KEY_PRODUCT, product)
 
                 mContext.startActivity(productDetailIntent)
             }
+
         }
     }
 }

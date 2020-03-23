@@ -21,7 +21,8 @@
             android:id="@+id/totals_block_layout_CA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp">
+            android:layout_margin="5dp"
+            android:visibility="visible">
 
             <TextView
                 style="@style/textTitleStyle1"
@@ -61,7 +62,7 @@
                 android:layout_toRightOf="@+id/image_view_RCA"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="Discount Price"
+                android:text="Discount"
                 android:textSize="20dp"
                 android:textStyle="normal" />
 

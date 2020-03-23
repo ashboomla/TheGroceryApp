@@ -45,7 +45,8 @@
         android:layout_marginRight="40dp"
         android:background="@drawable/button_background"
         android:text="register"
-        style="@style/buttonStyle2"/>
+        style="@style/buttonStyle2"
+        android:inputType="textPassword"/>
 
 
 </LinearLayout>

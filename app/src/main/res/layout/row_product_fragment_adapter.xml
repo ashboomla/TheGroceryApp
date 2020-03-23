@@ -43,6 +43,44 @@
             android:text="1"
             android:textSize="20dp" />
 
+<!--
+
+        <Button
+            android:id="@+id/button_add_APF"
+            style="@style/buttonStyle2"
+            android:layout_below="@+id/text_view_name_APF"
+            android:layout_marginLeft="50dp"
+            android:layout_width="40dp"
+            android:layout_toRightOf="@id/text_view_price_APF"
+            android:background="@drawable/button_shape_rounded_left"
+            android:text="+"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/button_qtyReq_APF"
+            style="@style/buttonStyle2"
+            android:layout_width="40dp"
+            android:textColor="@color/tbText"
+            android:layout_below="@id/text_view_name_APF"
+            android:layout_margin="0dp"
+            android:layout_toRightOf="@+id/button_add_APF"
+            android:background="@drawable/row_product_fragment_background"
+            android:clickable="false"
+            android:padding="0dp"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/button_sub_APF"
+            style="@style/buttonStyle2"
+            android:layout_below="@+id/text_view_name_APF"
+            android:layout_toRightOf="@+id/button_qtyReq_APF"
+            android:background="@drawable/button_shape_rounded_right"
+            android:padding="0dp"
+            android:layout_width="40dp"
+            android:text="-" />
+-->
+
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

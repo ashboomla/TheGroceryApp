@@ -9,9 +9,17 @@
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="15dp"
-        android:text="Welcome to \n Trill Grocers"
+        android:text="Welcome"
         android:textAlignment="center"
+        android:textSize="25dp"
         style="@style/textTitleStyle2"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/logo_trill_grocers" />
 
     <Button
         android:id="@+id/button_login_Launch"

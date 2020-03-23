@@ -13,9 +13,9 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.row_cart_adapter.view.*
 import kotlin.math.round
 
-class AdapterCart(var mContext: Context) :
+class AdapterCart(var mContext: Context, var mList : ArrayList<Product>) :
     RecyclerView.Adapter<AdapterCart.MyViewHolder>() {
-    private var mList =  ArrayList<Product>()
+   // private var mList =  ArrayList<Product>()
     var listener: AdapterInteraction?=null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterCart.MyViewHolder {
@@ -37,10 +37,10 @@ class AdapterCart(var mContext: Context) :
         notifyDataSetChanged() //
     }
 
-    fun refresh(position: Int){
-        notifyDataSetChanged()
-
-    }
+//    fun refresh(position: Int){
+//        notifyDataSetChanged()
+//
+//    }
     fun removeItem(position: Int) {
         mList.removeAt(position)
         notifyDataSetChanged()
@@ -59,17 +59,14 @@ class AdapterCart(var mContext: Context) :
 
         fun bind(product:Product,position: Int)
         {
-          //  var dbHelper : DBHelper = DBHelper(mContext)
+            var dbHelper : DBHelper = DBHelper(mContext)
 
             itemView.text_view_product_name_RCA.text = product.productName
-            itemView.text_view_mrp_RCA.text = "$${product.mrp.toString()}"
-            itemView.text_view_price_RCA.text = "$${product.price.toString()}"
+            itemView.text_view_mrp_RCA.text = "$${String.format("%.2f",product.mrp).toString()}"
+            itemView.text_view_price_RCA.text = "$${String.format("%.2f",product.price).toString()}"
             itemView.text_view_qtyReq_RCA.text = product.quantity.toString()
 
             var total : Double = (product.price * product.quantity)
-            var totalmrp : Double = (product.mrp * product.quantity)
-            var savings : Double = (totalmrp - total)
-
             itemView.text_view_total_RCA.text = "$${String.format("%.2f",total).toString()}"
             // String.format("%.2f",<your String>) // gives 2 decimal places
 
@@ -80,10 +77,13 @@ class AdapterCart(var mContext: Context) :
                 .error(R.drawable.image_place_holder)
                 .into(itemView.image_view_RCA)
 
-            var quan: Int = itemView.text_view_qtyReq_RCA.text.toString().toInt()
-            itemView.button_sub.setOnClickListener { /*it:View!*/ listener?.onItemCLicked(position,it) }
-            itemView.button_add.setOnClickListener { listener?.onItemCLicked(position,it) }
-            itemView.button_Remove_RCA.setOnClickListener{ listener?.onItemCLicked(position,it) }
+            itemView.button_sub.setOnClickListener { /*it:View!*/ listener?.onItemCLicked(position,it)
+            }
+            itemView.button_add.setOnClickListener {
+                listener?.onItemCLicked(position,it)
+            }
+            itemView.button_Remove_RCA.setOnClickListener{ listener?.onItemCLicked(position,it)
+            }
         }
     }
 }

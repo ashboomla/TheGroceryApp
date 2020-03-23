@@ -67,13 +67,13 @@ class AdapterCategory(var mContext: Context, var mList: ArrayList<Category>) :
 
             itemView.setOnClickListener{
                 var subCategoryIntent = Intent(mContext, SubCategoryActivity::class.java)
-             //   subCategoryIntent.putExtra("CATID", category.catId)
                 subCategoryIntent.putExtra("CATNAME", category.catName)
                 subCategoryIntent.putExtra(Category.KEY_CATEGORY, category)
 
 
                 mContext.startActivity(subCategoryIntent) // must use mContext to access anything on the activity
             } // sets on click listener for each item in the view
+
         }
     }
 }

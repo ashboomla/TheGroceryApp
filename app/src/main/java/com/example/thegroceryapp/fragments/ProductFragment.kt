@@ -16,16 +16,22 @@ import com.android.volley.toolbox.Volley
 import com.example.thegroceryapp.R
 import com.example.thegroceryapp.adapters.AdapterProductFragment
 import com.example.thegroceryapp.appData.Endpoints
+import com.example.thegroceryapp.helpers.DBHelper
 import com.example.thegroceryapp.models.Product
 import com.example.thegroceryapp.models.ProductResponse
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.fragment_product.*
 import kotlinx.android.synthetic.main.fragment_product.view.*
+import kotlinx.android.synthetic.main.row_product_fragment_adapter.*
 import kotlinx.android.synthetic.main.row_product_fragment_adapter.view.*
+
 private const val ARG_PARAM1 = "param1"
 
-class ProductFragment : Fragment() {
+class ProductFragment : Fragment(){
     lateinit var adapterProduct: AdapterProductFragment
+    lateinit var dbHelper: DBHelper
+
+
     var mList: ArrayList<Product> = ArrayList() //Create an arrayList of the Category DC //make sure its inside the class being outside will cause it to have errors.
 
     //pass the sub id to this fragment in a text box; display that
@@ -37,14 +43,18 @@ class ProductFragment : Fragment() {
         arguments?.let {
             subId = it.getInt(ARG_PARAM1)
         }
-
+        dbHelper = DBHelper(activity!!)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.fragment_product, container, false)// Inflate the layout for this fragment
+        var view = inflater.inflate(
+            R.layout.fragment_product,
+            container,
+            false
+        )// Inflate the layout for this fragment
 
         //view.textBOX.text = param1.toString()
         init(view)
@@ -60,7 +70,7 @@ class ProductFragment : Fragment() {
 
         adapterProduct = AdapterProductFragment(activity as Context) //to typecast activity to another type
         view.recycler_view_product.layoutManager = LinearLayoutManager(activity) //init Layout Manager : picks layout
-         // mContext = this ; this lets the adapter know that this current
+        // mContext = this ; this lets the adapter know that this current
         // activty is using the adapter for the recycle view
 
         view.recycler_view_product.adapter = adapterProduct //set the adapter to the recycler view
@@ -86,7 +96,7 @@ class ProductFragment : Fragment() {
                 //var product = productResponse.data
                 mList = productResponse.data // you have the data
                 // set up with recycler view
-                //Log.d("image1", mList[0].prodImage.toString())
+
                 adapterProduct.setData(mList)
             },
             Response.ErrorListener {
@@ -105,4 +115,7 @@ class ProductFragment : Fragment() {
             }
     }
 
+
 }
+
+

@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thegroceryapp.R
@@ -25,18 +27,14 @@ class CartActivity : AppCompatActivity(), AdapterCart.AdapterInteraction {
     lateinit var cart: ArrayList<Product>
     lateinit var dbHelper: DBHelper
 
-
-    // lateinit var mAdapter : AdapterCart //new
-    // var mList: ArrayList<Product> = ArrayList() //Create an arrayList of the Category DC
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
+
         dbHelper = DBHelper(this)
 
         init()
         setupToolBar()
-        getTotals()
 
     }
 
@@ -84,76 +82,89 @@ class CartActivity : AppCompatActivity(), AdapterCart.AdapterInteraction {
 
 
         recycler_view_cart.layoutManager = LinearLayoutManager(this)
-        adapterCart =
-            AdapterCart(this)//creates an instance of the adapter cart ; so you can use whatever is inside it.
+        adapterCart = AdapterCart(this, cart)//creates an instance of the adapter cart ; so you can use whatever is inside it.
         adapterCart.setAdapterInteraction(this)
         adapterCart.setData(cart) //^^ this is why I can get this function.
         recycler_view_cart.adapter = adapterCart
 
         getTotals()
+        cartempty()
 
-        button_checkout_CA.setOnClickListener{
-        startActivity(Intent(this,SelectAddressActivity::class.java))
+
+        button_checkout_CA.setOnClickListener {
+            startActivity(Intent(this, SelectAddressActivity::class.java))
         }
     }
 
+    private fun cartempty() {
+        if (cart.isEmpty()) {
+            no_items_CA.visibility = VISIBLE
+            totals_block_layout_CA.visibility = INVISIBLE
+
+        } else {
+            no_items_CA.visibility = INVISIBLE
+            totals_block_layout_CA.visibility = VISIBLE
+        }
+    }
 
 
     private fun getTotals() {
 
         var totalPrice: Double = 0.0 //mrp
         var totalDiscount: Double = 0.0 //discount
+        var delivery: Double = 0.00 // delivery
         var checkoutPrice: Double = 0.0 //mrp - discount
         for (each in cart) {
 
             totalPrice += (each.quantity * each.mrp)
-            text_view_total_price_CA.text = totalPrice.toString()
+            text_view_total_price_CA.text = "$${String.format("%.2f",totalPrice).toString()}"
 
             totalDiscount += (each.quantity * (each.mrp - each.price))
-            text_view_discount_price_CA.text = totalDiscount.toString()
+            text_view_discount_price_CA.text = "$${String.format("%.2f",totalDiscount).toString()}"
 
-            text_view_delivery_charges_CA.text =0.00.toString()
+            text_view_delivery_charges_CA.text = "$${String.format("%.2f",0.00).toString()}"
 
             checkoutPrice += (each.quantity * each.price)
-            text_view_checkout_price_CA.text = checkoutPrice.toString()
-
-
+            text_view_checkout_price_CA.text = "$${String.format("%.2f",(checkoutPrice+delivery)).toString()}"
 
         }
     }
 
-
-
     override fun onItemCLicked(position: Int, view: View) {
-        cart = dbHelper.readCart() //array  list of product
-        getTotals()
-
-        var quan: Int = text_view_qtyReq_RCA.text.toString().toInt()
+        var product = cart.get(position)
+        var quan = product.quantity
         when (view.id) {
 
             R.id.button_add -> {
                 quan++
+                product.quantity = product.quantity + 1
                 text_view_qtyReq_RCA.text = quan.toString()
                 dbHelper.updateCartCount(cart[position], true)
-
-                var total : Double = (cart[position].price * dbHelper.getCartCount(cart[position]))//get total on cart view --PROBLEM //skips
-                text_view_total_RCA.text = "$${String.format("%.2f",total).toString()}"
-
+                cart.set(position, product)
+                adapterCart.notifyItemChanged(position)  //updates the cart
+                var total: Double =
+                    (cart[position].price * text_view_qtyReq_RCA.text.toString().toInt())
+                text_view_total_RCA.text = "$${String.format("%.2f", total).toString()}"
             }
             R.id.button_sub -> {
                 if (quan > 0) {
                     quan--
+                    product.quantity = product.quantity - 1
                     text_view_qtyReq_RCA.text = quan.toString()
                     dbHelper.updateCartCount(cart[position], false) //update to db
-                    var total : Double = (cart[position].price * dbHelper.getCartCount(cart[position]))//get total on cart view
-                    text_view_total_RCA.text = "$${String.format("%.2f",total).toString()}"
+                    cart.set(position, product)  // ??? sets the position of the product?
+                    adapterCart.notifyItemChanged(position)
+                    var total: Double =
+                        (cart[position].price * text_view_qtyReq_RCA.text.toString().toDouble())
+                    text_view_total_RCA.text = "$${String.format("%.2f", total).toString()}"
+
                 }
                 if (quan == 0) {
                     dbHelper.deleteCart(cart[position]) //remove from db
                     adapterCart.removeItem(position) // remove from recyclerView
-                    var total : Double = (cart[position].price * dbHelper.getCartCount(cart[position]))//get total on cart view
-                    text_view_total_RCA.text = "$${String.format("%.2f",total).toString()}"
+                    adapterCart.notifyItemChanged(position)
                 }
+
             }
 
 
@@ -161,11 +172,13 @@ class CartActivity : AppCompatActivity(), AdapterCart.AdapterInteraction {
                 Toast.makeText(this, " " + position, Toast.LENGTH_SHORT).show()
                 dbHelper.deleteCart(cart[position]) //remove from db
                 adapterCart.removeItem(position) // remove from recyclerView
-                var total : Double = (cart[position].price * dbHelper.getCartCount(cart[position]))//get total on cart view
-                text_view_total_RCA.text = "$${String.format("%.2f",total).toString()}"
+
+                var total: Double =
+                    (cart[position].price * dbHelper.getCartCount(cart[position]))//get total on cart view
+                text_view_total_RCA.text = "$${String.format("%.2f", total).toString()}"
             }
         }
+        getTotals()
+        cartempty()
     }
-
-
 }

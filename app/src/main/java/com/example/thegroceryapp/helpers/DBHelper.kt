@@ -14,7 +14,7 @@ class DBHelper(var mContext: Context) :
 
     companion object {
         private const val DATABASE_NAME = "CartDB"
-        private const val DATABASE_VERSION = 5
+        private const val DATABASE_VERSION = 6
         private const val TABLE_NAME = "cart"
         private const val COLUMNS_PRODUCT_NAME = "productName"
         private const val COLUMNS_PRICE = "price"
@@ -22,6 +22,21 @@ class DBHelper(var mContext: Context) :
         private const val COLUMNS_ID = "_id"
         private const val COLUMNS_IMAGE = "image"
         private const val COLUMNS_MRP = "mrp"
+
+    /*    private const val TABLE_NAME2 = "addresses"
+        private const val COLUMNS_TYPE = "type"
+        private const val COLUMNS_NAME = "name"
+        private const val COLUMNS_ADDRESS = "address"
+        private const val COLUMNS_ZIP = "zip"
+
+
+*//* var type: String,
+    var name: String,
+    var house_apt_no: String?,
+    var street: String?,
+    var city: String?,
+    var state: String?,
+    var zip: String*/
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -141,6 +156,7 @@ class DBHelper(var mContext: Context) :
         if (cursor != null && cursor.moveToFirst()){
             quantity = cursor.getInt(cursor.getColumnIndex(COLUMNS_QUANTITY))
         }
+        cursor.close()//
         return quantity
     }
 
@@ -150,7 +166,7 @@ class DBHelper(var mContext: Context) :
         db.delete(TABLE_NAME, whereClause, whereArgs)
     }
 
-    /** I really do not understand this: what is rawQuery??
+    /** what is rawQuery??
      *  just like a normal select statement util you get to the "=?"
      *  the argument goes into a rawQuery as an array:
      *  this can have multiple conditions : each condition is an element in the array.
