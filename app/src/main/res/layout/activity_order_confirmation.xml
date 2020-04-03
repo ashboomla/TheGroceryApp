@@ -14,7 +14,7 @@
         />
 
     <Button
-        android:id="@+id/button_home_OCA"
+        android:id="@+id/button_continue_shopping_OCA"
         style="@style/buttonStyle2"
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
@@ -24,7 +24,7 @@
         android:layout_marginRight="50dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/button_background"
-        android:text="Continue"
+        android:text="Continue Shopping"
         android:textSize="20dp" />
 
 </RelativeLayout>

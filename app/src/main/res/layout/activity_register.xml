@@ -31,22 +31,22 @@
 
     <EditText
         android:id="@+id/edit_text_password_Register"
+        style="@style/textSubStyle1"
         android:layout_width="match_parent"
         android:background="@drawable/textbox_background"
         android:drawableStart="@drawable/ic_vpn_key_black_24dp"
         android:hint="enter password"
-        style="@style/textSubStyle1" />
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/button_register_Register"
+        style="@style/buttonStyle2"
         android:layout_width="match_parent"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/button_background"
-        android:text="register"
-        style="@style/buttonStyle2"
-        android:inputType="textPassword"/>
+        android:text="register" />
 
 
 </LinearLayout>

@@ -25,8 +25,6 @@ class LoginActivity : AppCompatActivity() {
      //   checkLogin()
     }
 
-
-
     private fun init() {
         button_login_Login.setOnClickListener {
             var email = edit_text_email_Login.text.toString()

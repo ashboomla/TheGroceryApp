@@ -1,0 +1,145 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e6e6e6">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+
+        <EditText
+            android:id="@+id/edit_text_type_AAD"
+            style="@style/textSubStyle1"
+            android:layout_width="match_parent"
+            android:background="@drawable/textbox_background"
+            android:drawableStart="@drawable/ic_person_black_24dp"
+            android:hint="Type" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <EditText
+            android:id="@+id/edit_text_name_AAD"
+            style="@style/textSubStyle1"
+            android:layout_width="match_parent"
+            android:background="@drawable/textbox_background"
+            android:drawableStart="@drawable/ic_person_black_24dp"
+            android:hint="Name" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <EditText
+            android:id="@+id/edit_text_house_AAD"
+            style="@style/textSubStyle1"
+            android:layout_width="match_parent"
+            android:background="@drawable/textbox_background"
+            android:drawableStart="@drawable/ic_person_black_24dp"
+            android:hint="House/Apt No." />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <EditText
+            android:id="@+id/edit_text_street_AAD"
+            style="@style/textSubStyle1"
+            android:layout_width="match_parent"
+            android:background="@drawable/textbox_background"
+            android:drawableStart="@drawable/ic_person_black_24dp"
+            android:hint="Street" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <EditText
+            android:id="@+id/edit_text_city_AAD"
+            style="@style/textSubStyle1"
+            android:layout_width="match_parent"
+            android:background="@drawable/textbox_background"
+            android:drawableStart="@drawable/ic_person_black_24dp"
+            android:hint="City" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <EditText
+            android:id="@+id/edit_text_state_AAD"
+            style="@style/textSubStyle1"
+            android:layout_width="match_parent"
+            android:background="@drawable/textbox_background"
+            android:drawableStart="@drawable/ic_person_black_24dp"
+            android:hint="State" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <EditText
+            android:id="@+id/edit_text_zip_AAD"
+            style="@style/textSubStyle1"
+            android:layout_width="match_parent"
+            android:background="@drawable/textbox_background"
+            android:drawableStart="@drawable/ic_person_black_24dp"
+            android:hint="ZIP/Postal Code" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_change_address_AAD"
+        style="@style/buttonStyle2"
+        android:layout_width="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/button_background"
+        android:text="Change Address"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/button_remove_address_AAD"
+        style="@style/buttonStyle2"
+        android:layout_width="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/button_background"
+        android:text="Remove Address"
+        android:textSize="20dp" />
+
+
+</LinearLayout>
+
+</ScrollView>

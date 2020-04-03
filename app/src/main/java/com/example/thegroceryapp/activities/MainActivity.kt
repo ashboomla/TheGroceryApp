@@ -117,11 +117,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
         getData()
-        recycler_view.layoutManager =
-            GridLayoutManager(
-                this,
-                2
-            ) //init Layout Manager : picks layout  // mContext = this ; this lets the adapter know that this current
+        recycler_view.layoutManager = GridLayoutManager(this, 2 ) //init Layout Manager : picks layout  // mContext = this ; this lets the adapter know that this current
         adapterCategory =
             AdapterCategory(this, mList) // activty is using the adapter for the recycle view
 
@@ -132,8 +128,7 @@ class MainActivity : AppCompatActivity() {
     private fun getData() {
         val url = "https://apolis-grocery.herokuapp.com/api/category/"
 
-        var requestQueue =
-            Volley.newRequestQueue(this) //Request Queue keeps track of all your requests
+        var requestQueue = Volley.newRequestQueue(this) //Request Queue keeps track of all your requests
 
         var stringRequest = StringRequest(
             Request.Method.GET, Endpoints.getCategory(),

@@ -88,7 +88,6 @@ class ProductDetailActivity : AppCompatActivity(), View.OnClickListener {
             .into(image_view_PDA)
 
         button_add_to_cart.setOnClickListener(this)
-        //button_go_to_cart.setOnClickListener(this)
         button_add_Multi_PDA.setOnClickListener(this)
         button_sub_Multi_PDA.setOnClickListener(this)
 
